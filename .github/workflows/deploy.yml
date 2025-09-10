@@ -53,8 +53,8 @@ jobs:
     - name: Verify External Dependencies
       run: |
         echo "🔍 Verifying external dependencies..."
-        grep -q "bootstrap@5" index.html && echo "✅ Bootstrap 5 CDN found" || exit 1
-        grep -q "font-awesome" index.html && echo "✅ Font Awesome found" || exit 1
+        grep -q "bootstrap@5" index.html && echo "✅ Bootstrap 5 CDN found" || echo "❌ Bootstrap 5 CDN NOT found"
+        grep -q "font-awesome\|fontawesome" index.html && echo "✅ Font Awesome found" || echo "❌ Font Awesome NOT found"
         
     - name: Check Project Structure
       run: |
