@@ -1,6 +1,5 @@
-# Configuration files with sensitive data
-assets/js/config.js
-SETUP-FORM.md
+# Internal documentation
+WORKFLOW.md
 
 # Logs
 logs
