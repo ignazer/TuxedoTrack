@@ -1,14 +1,21 @@
-# CyberSecure Pro - Landing Page
+# TuxedoTrack - Investigación Digital OSINT
 
-Landing page profesional para servicios de ciberseguridad, diseñada con un enfoque en la seriedad y profesionalismo del sector.
+Landing page profesional para servicios de investigación digital e inteligencia OSINT, diseñada con un enfoque en la protección de privacidad y metodologías éticas.
 
 ## 🚀 Características
 
-- **Diseño profesional**: Colores oscuros y tipografía seria, ideal para ciberseguridad
+- **Diseño profesional**: Colores oscuros y tipografía seria, ideal para servicios de investigación
 - **Responsive**: Adaptable a todos los dispositivos
 - **Optimizado**: Carga rápida y rendimiento optimizado
-- **Formulario de contacto**: Integrado con Formspree para recibir consultas
+- **Formulario de contacto**: Integrado con Formspree para recibir consultas confidenciales
 - **CI/CD**: Despliegue automático con GitHub Actions
+
+## 🔍 Servicios OSINT
+
+- **Búsqueda de Personas**: Localización e investigación de individuos
+- **Análisis de Huella Digital**: Evaluación de presencia online
+- **Protección de Privacidad**: Minimización de exposición digital
+- **Investigación Digital Especializada**: Casos delicados y complejos
 
 ## 🛠️ Stack Tecnológico
 

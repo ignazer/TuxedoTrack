@@ -24,7 +24,7 @@ document.addEventListener('DOMContentLoaded', function() {
             const targetSection = document.querySelector(targetId);
             
             if (targetSection) {
-                const offsetTop = targetSection.offsetTop - 80; // Account for fixed navbar
+                const offsetTop = targetSection.offsetTop - 100; // Account for fixed navbar height
                 
                 window.scrollTo({
                     top: offsetTop,
@@ -75,57 +75,11 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
 
-    // Animate elements on scroll
-    const observerOptions = {
-        threshold: 0.1,
-        rootMargin: '0px 0px -50px 0px'
-    };
-    
-    const observer = new IntersectionObserver(function(entries) {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                entry.target.style.opacity = '1';
-                entry.target.style.transform = 'translateY(0)';
-            }
-        });
-    }, observerOptions);
-    
-    // Observe service cards and stat items
-    const animatedElements = document.querySelectorAll('.service-card, .stat-item, .feature-item');
-    
-    animatedElements.forEach(el => {
-        el.style.opacity = '0';
-        el.style.transform = 'translateY(30px)';
-        el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
-        observer.observe(el);
-    });
+    // Elements are visible by default, no scroll animations
 
-    // Add typing effect to hero title
-    const heroTitle = document.querySelector('.hero-title');
-    if (heroTitle) {
-        const text = heroTitle.innerHTML;
-        heroTitle.innerHTML = '';
-        
-        let i = 0;
-        const typeWriter = () => {
-            if (i < text.length) {
-                heroTitle.innerHTML += text.charAt(i);
-                i++;
-                setTimeout(typeWriter, 50);
-            }
-        };
-        
-        // Start typing effect after a short delay
-        setTimeout(typeWriter, 500);
-    }
+    // Hero title is displayed normally without typing effect
 
-    // Add floating animation to service icons
-    const serviceIcons = document.querySelectorAll('.service-icon i');
-    
-    serviceIcons.forEach((icon, index) => {
-        icon.style.animation = `float 6s ease-in-out infinite`;
-        icon.style.animationDelay = `${index * 0.5}s`;
-    });
+    // Service icons have normal display, no floating animation
 
     // Contact form field focus effects
     const formFields = document.querySelectorAll('.form-control, .form-select');

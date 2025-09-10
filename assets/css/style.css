@@ -79,6 +79,7 @@ html {
     background: var(--gradient-dark);
     position: relative;
     overflow: hidden;
+    padding-top: 100px; /* Add space for fixed navbar */
 }
 
 .hero-section::before {
@@ -159,13 +160,9 @@ html {
     font-size: 15rem;
     color: var(--primary-color);
     opacity: 0.3;
-    animation: float 6s ease-in-out infinite;
 }
 
-@keyframes float {
-    0%, 100% { transform: translateY(0px); }
-    50% { transform: translateY(-20px); }
-}
+/* Removed float animation for cleaner design */
 
 /* Services Section */
 .services-section {
@@ -372,6 +369,10 @@ html {
 
 /* Responsive Design */
 @media (max-width: 768px) {
+    .hero-section {
+        padding-top: 80px; /* Less padding on mobile */
+    }
+    
     .hero-title {
         font-size: 2.5rem;
     }
