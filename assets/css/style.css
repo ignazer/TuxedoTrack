@@ -399,31 +399,6 @@ html {
     color: var(--gray-text);
 }
 
-.social-links {
-    display: flex;
-    gap: 1rem;
-    justify-content: flex-end;
-}
-
-.social-link {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    width: 40px;
-    height: 40px;
-    background: rgba(255, 255, 255, 0.1);
-    color: var(--gray-text);
-    border-radius: 50%;
-    transition: all 0.3s ease;
-    text-decoration: none;
-}
-
-.social-link:hover {
-    background: var(--primary-color);
-    color: white;
-    transform: translateY(-2px);
-}
-
 /* Responsive Design */
 @media (max-width: 768px) {
     .hero-section {
@@ -466,11 +441,6 @@ html {
     .value-item {
         margin-bottom: 1.5rem;
         padding: 1.25rem;
-    }
-    
-    .social-links {
-        justify-content: center;
-        margin-top: 1rem;
     }
 }
 
