@@ -29,16 +29,16 @@ const GITHUB_TOKEN = 'YOUR_GITHUB_TOKEN';    // Token que creaste
 Ve a **Settings** > **Secrets and variables** > **Actions** y agrega:
 
 ```
-EMAIL_USERNAME = tu-email@gmail.com
-EMAIL_PASSWORD = tu-app-password-de-gmail
-NOTIFICATION_EMAIL = donde-quieres-recibir-notificaciones@gmail.com
+EMAIL_USERNAME = tuxedotrack@proton.me
+EMAIL_PASSWORD = tu-app-password-de-protonmail
+NOTIFICATION_EMAIL = tuxedotrack@proton.me
 ```
 
-#### Para Gmail App Password:
-1. Ve a **Google Account** > **Security** > **2-Step Verification**
-2. Click **App passwords**
-3. Genera una contraseña para "Mail"
-4. Usa esa contraseña en `EMAIL_PASSWORD`
+#### Para ProtonMail Bridge (recomendado):
+1. Descarga **ProtonMail Bridge** (para SMTP)
+2. Configura Bridge en tu sistema
+3. Usa las credenciales que Bridge te proporciona
+4. Alternativamente, usa `smtp.protonmail.com` directamente
 
 ## 🚀 Cómo Funciona
 
