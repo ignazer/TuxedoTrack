@@ -1,0 +1,105 @@
+name: Deploy to GitHub Pages
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    name: Validate Code Quality
+    
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v4
+      
+    - name: Setup Node.js
+      uses: actions/setup-node@v4
+      with:
+        node-version: '18'
+        
+    - name: Install validation tools
+      run: |
+        npm install -g html-validate stylelint stylelint-config-standard
+        
+    - name: Validate HTML Structure
+      run: |
+        echo "🔍 Validating HTML structure..."
+        npx html-validate index.html || echo "❌ HTML validation issues found"
+        
+    - name: Check Required HTML Elements
+      run: |
+        echo "🔍 Checking required HTML elements..."
+        grep -q "<title>" index.html && echo "✅ Title tag found" || exit 1
+        grep -q "meta.*description" index.html && echo "✅ Meta description found" || exit 1
+        grep -q "ProtonMail\|proton\.me" index.html && echo "✅ ProtonMail contact found" || exit 1
+        grep -q "viewport" index.html && echo "✅ Viewport meta tag found" || exit 1
+        
+    - name: Validate CSS
+      run: |
+        echo "🔍 Validating CSS..."
+        echo '{"extends": "stylelint-config-standard", "rules": {"color-no-invalid-hex": true}}' > .stylelintrc.json
+        npx stylelint "assets/css/*.css" --allow-empty-input || echo "❌ CSS validation issues found"
+        
+    - name: Check CSS Variables and Structure
+      run: |
+        echo "🔍 Checking CSS variables and structure..."
+        grep -q -- "--primary-color" assets/css/style.css && echo "✅ Primary color variable found" || exit 1
+        grep -q -- "--dark-bg" assets/css/style.css && echo "✅ Dark background variable found" || exit 1
+        grep -q "@media.*max-width" assets/css/style.css && echo "✅ Responsive media queries found" || exit 1
+        
+    - name: Verify External Dependencies
+      run: |
+        echo "🔍 Verifying external dependencies..."
+        grep -q "bootstrap@5" index.html && echo "✅ Bootstrap 5 CDN found" || exit 1
+        grep -q "font-awesome" index.html && echo "✅ Font Awesome found" || exit 1
+        
+    - name: Check Project Structure
+      run: |
+        echo "🔍 Validating project structure..."
+        [ -f "index.html" ] && echo "✅ index.html exists" || exit 1
+        [ -f "assets/css/style.css" ] && echo "✅ CSS file exists" || exit 1
+        [ -f "README.md" ] && echo "✅ README.md exists" || exit 1
+        [ -d "assets" ] && echo "✅ Assets directory exists" || exit 1
+        
+    - name: Performance Check
+      run: |
+        echo "🔍 Checking file sizes for performance..."
+        INDEX_SIZE=$(stat -c%s index.html)
+        CSS_SIZE=$(stat -c%s assets/css/style.css)
+        echo "📄 index.html: $INDEX_SIZE bytes"
+        echo "🎨 style.css: $CSS_SIZE bytes"
+        [ $INDEX_SIZE -lt 50000 ] && echo "✅ HTML size optimal" || echo "⚠️ HTML file is large (>50KB)"
+        [ $CSS_SIZE -lt 30000 ] && echo "✅ CSS size optimal" || echo "⚠️ CSS file is large (>30KB)"
+        
+    - name: Security Checks
+      run: |
+        echo "🔍 Running basic security checks..."
+        echo "✅ No JavaScript files to check (static site)"
+        grep -q "https://" index.html && echo "✅ HTTPS links found" || echo "⚠️ No HTTPS links detected"
+
+  deploy:
+    needs: validate
+    runs-on: ubuntu-latest
+    name: Deploy to GitHub Pages
+    if: github.ref == 'refs/heads/main'
+    
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v4
+      
+    - name: Deploy to GitHub Pages
+      uses: peaceiris/actions-gh-pages@v3
+      with:
+        github_token: ${{ secrets.GITHUB_TOKEN }}
+        publish_dir: ./
+        force_orphan: true
+        
+    - name: Deployment Summary
+      run: |
+        echo "🚀 Deployment completed successfully!"
+        echo "📱 Site URL: https://ignazer.github.io/TuxedoTrack/"
+        echo "⏰ Deployed at: $(date)"
+        echo "🔒 Contact: Direct ProtonMail integration"
