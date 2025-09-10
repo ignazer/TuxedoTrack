@@ -293,6 +293,37 @@ html {
     font-weight: 500;
 }
 
+.about-value {
+    padding: 2rem;
+}
+
+.value-item {
+    margin-bottom: 2rem;
+    padding: 1.5rem;
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 12px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    transition: all 0.3s ease;
+}
+
+.value-item:hover {
+    border-color: var(--primary-color);
+    transform: translateY(-5px);
+}
+
+.value-item h4 {
+    color: var(--primary-color);
+    font-size: 1.25rem;
+    font-weight: 600;
+    margin-bottom: 0.75rem;
+}
+
+.value-item p {
+    color: var(--gray-text);
+    line-height: 1.6;
+    margin-bottom: 0;
+}
+
 /* Contact Section */
 .contact-section {
     background: var(--darker-bg);
@@ -399,6 +430,16 @@ html {
     .about-stats {
         grid-template-columns: 1fr;
         gap: 1rem;
+    }
+    
+    .about-value {
+        padding: 1rem;
+        margin-top: 2rem;
+    }
+    
+    .value-item {
+        margin-bottom: 1.5rem;
+        padding: 1.25rem;
     }
     
     .social-links {
