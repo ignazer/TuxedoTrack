@@ -13,7 +13,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/tu-usuario/tuxedotrack-landing.git"
+    "url": "git+https://github.com/ignazer/TuxedoTrack.git"
   },
   "keywords": [
     "osint",
@@ -26,9 +26,9 @@
   "author": "TuxedoTrack",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/tu-usuario/tuxedotrack-landing/issues"
+    "url": "https://github.com/ignazer/TuxedoTrack/issues"
   },
-  "homepage": "https://tu-usuario.github.io/tuxedotrack-landing",
+  "homepage": "https://ignazer.github.io/TuxedoTrack",
   "devDependencies": {
     "html-validate": "^8.0.0",
     "stylelint": "^15.0.0",

@@ -1,6 +1,14 @@
 # TuxedoTrack - Investigación Digital OSINT
 
-Landing page profesional para servicios de investigación digital e inteligencia OSINT, diseñada con un enfoque en la protección de privacidad y metodologías éticas.
+Landing page pr### **1. Configurar Formspree (Formulario de Contacto)**
+
+**NOTA:** Este proyecto usa GitHub Issues en lugar de Formspree para mayor seguridad.
+Ver `SETUP-FORM.md` para instrucciones completas.
+
+1. Ve a [Formspree.io](https://formspree.io) (solo si prefieres Formspree)
+2. Crea una cuenta gratuita
+3. Obtén tu endpoint de formulario
+4. Reemplaza en el JavaScript (no recomendado para OSINT)nal para servicios de investigación digital e inteligencia OSINT, diseñada con un enfoque en la protección de privacidad y metodologías éticas.
 
 ## 🚀 Características
 

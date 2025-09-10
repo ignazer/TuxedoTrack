@@ -98,9 +98,22 @@ document.addEventListener('DOMContentLoaded', function() {
     // Function to submit to GitHub Issues
     async function submitToGitHubIssues(formData) {
         // GitHub repository configuration
-        const GITHUB_OWNER = 'YOUR_GITHUB_USERNAME'; // Replace with your GitHub username
-        const GITHUB_REPO = 'YOUR_REPO_NAME'; // Replace with your repository name
-        const GITHUB_TOKEN = 'YOUR_GITHUB_TOKEN'; // Replace with your GitHub token
+        // Use external config if available, otherwise fallback to defaults
+        const config = window.TuxedoConfig || {
+            github: {
+                owner: 'ignazer',
+                repo: 'TuxedoTrack', 
+                token: 'YOUR_GITHUB_TOKEN' // Must be configured
+            }
+        };
+        
+        const GITHUB_OWNER = config.github.owner;
+        const GITHUB_REPO = config.github.repo;
+        const GITHUB_TOKEN = config.github.token;
+        
+        if (GITHUB_TOKEN === 'YOUR_GITHUB_TOKEN') {
+            throw new Error('GitHub token not configured. Please check SETUP-FORM.md');
+        }
         
         // Create issue title and body
         const issueTitle = `Nueva Solicitud de Reunión - ${formData.servicio}`;

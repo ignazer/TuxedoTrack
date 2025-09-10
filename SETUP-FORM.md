@@ -16,13 +16,22 @@ Este sistema permite recibir formularios de contacto de forma segura usando GitH
 
 ### 2. Configurar Variables en JavaScript
 
-Edita `assets/js/main.js` y reemplaza:
+**Opción A: Archivo de configuración (Recomendado)**
+1. Copia `assets/js/config.example.js` a `assets/js/config.js`
+2. Edita `config.js` y actualiza tu token:
 
 ```javascript
-const GITHUB_OWNER = 'YOUR_GITHUB_USERNAME'; // Tu username de GitHub
-const GITHUB_REPO = 'YOUR_REPO_NAME';        // Nombre de tu repositorio
-const GITHUB_TOKEN = 'YOUR_GITHUB_TOKEN';    // Token que creaste
+window.TuxedoConfig = {
+    github: {
+        owner: 'ignazer',
+        repo: 'TuxedoTrack',
+        token: 'ghp_tu_token_aqui' // Token que creaste
+    }
+};
 ```
+
+**Opción B: Editar directamente (Menos seguro)**
+Edita `assets/js/main.js` y reemplaza `YOUR_GITHUB_TOKEN` con tu token real.
 
 ### 3. Configurar Secrets en GitHub (para notificaciones por email)
 

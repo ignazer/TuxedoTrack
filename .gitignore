@@ -1,3 +1,6 @@
+# Configuration files with sensitive data
+assets/js/config.js
+
 # Logs
 logs
 *.log
