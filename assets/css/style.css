@@ -366,6 +366,32 @@ html {
     color: var(--light-text);
 }
 
+/* Form Messages */
+.form-message {
+    margin-top: 1rem;
+    padding: 1rem;
+    border-radius: 8px;
+    font-weight: 500;
+}
+
+.form-message.success {
+    background: rgba(16, 185, 129, 0.1);
+    border: 1px solid var(--success-color);
+    color: var(--success-color);
+}
+
+.form-message.error {
+    background: rgba(239, 68, 68, 0.1);
+    border: 1px solid #ef4444;
+    color: #ef4444;
+}
+
+.form-message.loading {
+    background: rgba(59, 130, 246, 0.1);
+    border: 1px solid var(--primary-color);
+    color: var(--primary-color);
+}
+
 /* Footer */
 .footer {
     background: var(--dark-bg);

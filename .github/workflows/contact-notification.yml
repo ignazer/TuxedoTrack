@@ -1,0 +1,55 @@
+name: Contact Form Notification
+
+on:
+  issues:
+    types: [opened]
+
+jobs:
+  notify:
+    if: contains(github.event.issue.labels.*.name, 'contact-form')
+    runs-on: ubuntu-latest
+    
+    steps:
+    - name: Send Email Notification
+      uses: dawidd6/action-send-mail@v3
+      with:
+        server_address: smtp.gmail.com
+        server_port: 587
+        username: ${{ secrets.EMAIL_USERNAME }}
+        password: ${{ secrets.EMAIL_PASSWORD }}
+        subject: "Nueva Solicitud de Reunión - TuxedoTrack"
+        to: ${{ secrets.NOTIFICATION_EMAIL }}
+        from: ${{ secrets.EMAIL_USERNAME }}
+        html_body: |
+          <h2>Nueva Solicitud de Reunión</h2>
+          <p><strong>Issue:</strong> <a href="${{ github.event.issue.html_url }}">#${{ github.event.issue.number }}</a></p>
+          <p><strong>Título:</strong> ${{ github.event.issue.title }}</p>
+          
+          <h3>Detalles:</h3>
+          <pre style="background: #f6f8fa; padding: 16px; border-radius: 6px;">
+          ${{ github.event.issue.body }}
+          </pre>
+          
+          <p><a href="${{ github.event.issue.html_url }}">Ver en GitHub</a></p>
+          
+    - name: Add Processing Label
+      uses: actions/github-script@v6
+      with:
+        script: |
+          github.rest.issues.addLabels({
+            issue_number: context.issue.number,
+            owner: context.repo.owner,
+            repo: context.repo.repo,
+            labels: ['procesando']
+          })
+          
+    - name: Add Comment
+      uses: actions/github-script@v6
+      with:
+        script: |
+          github.rest.issues.createComment({
+            issue_number: context.issue.number,
+            owner: context.repo.owner,
+            repo: context.repo.repo,
+            body: '✅ Notificación enviada por email. El equipo de TuxedoTrack revisará esta solicitud pronto.'
+          })

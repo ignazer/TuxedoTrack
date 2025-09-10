@@ -53,7 +53,7 @@
                         <h1 class="hero-title">Protege tu privacidad digital con <span class="text-primary">investigación OSINT</span> profesional</h1>
                         <p class="hero-subtitle">Especialistas en inteligencia de fuentes abiertas. Investigamos, analizamos y protegemos tu huella digital utilizando únicamente información de dominio público y metodologías éticas.</p>
                         <div class="hero-buttons">
-                            <a href="#contacto" class="btn btn-primary btn-lg me-3">Consulta Gratuita</a>
+                            <a href="#contacto" class="btn btn-primary btn-lg me-3">Agendar Reunión</a>
                             <a href="#servicios" class="btn btn-outline-light btn-lg">Ver Servicios</a>
                         </div>
                     </div>
@@ -170,29 +170,35 @@
         <div class="container">
             <div class="row">
                 <div class="col-12 text-center mb-5">
-                    <h2 class="section-title">Contáctanos</h2>
-                    <p class="section-subtitle">¿Necesitas proteger tu privacidad o realizar una investigación digital? Consulta gratuita y confidencial</p>
+                    <h2 class="section-title">Agenda una Consulta</h2>
+                    <p class="section-subtitle">¿Necesitas nuestros servicios? Agenda una reunión presencial para una consulta confidencial y personalizada</p>
                 </div>
             </div>
             <div class="row justify-content-center">
                 <div class="col-lg-8">
-                    <form class="contact-form" action="https://formspree.io/f/YOUR_FORM_ID" method="POST">
+                    <form class="contact-form" id="contactForm">
                         <div class="row g-3">
                             <div class="col-md-6">
-                                <input type="text" class="form-control" name="nombre" placeholder="Nombre completo" required>
+                                <input type="text" class="form-control" name="nombre" id="nombre" placeholder="Nombre completo" required>
                             </div>
                             <div class="col-md-6">
-                                <input type="email" class="form-control" name="email" placeholder="Email" required>
+                                <input type="email" class="form-control" name="email" id="email" placeholder="Email de contacto" required>
                             </div>
                             <div class="col-md-6">
-                                <input type="text" class="form-control" name="empresa" placeholder="Empresa">
+                                <input type="tel" class="form-control" name="telefono" id="telefono" placeholder="Teléfono" required>
                             </div>
                             <div class="col-md-6">
-                                <input type="tel" class="form-control" name="telefono" placeholder="Teléfono">
+                                <select class="form-select" name="ciudad" id="ciudad" required>
+                                    <option value="">Ciudad para la reunión</option>
+                                    <option value="santiago">Santiago</option>
+                                    <option value="valparaiso">Valparaíso</option>
+                                    <option value="concepcion">Concepción</option>
+                                    <option value="otra">Otra ciudad</option>
+                                </select>
                             </div>
                             <div class="col-12">
-                                <select class="form-select" name="servicio" required>
-                                    <option value="">Selecciona un servicio</option>
+                                <select class="form-select" name="servicio" id="servicio" required>
+                                    <option value="">Tipo de consulta</option>
                                     <option value="busqueda-personas">Búsqueda de Personas</option>
                                     <option value="huella-digital">Análisis de Huella Digital</option>
                                     <option value="proteccion-privacidad">Protección de Privacidad</option>
@@ -201,10 +207,13 @@
                                 </select>
                             </div>
                             <div class="col-12">
-                                <textarea class="form-control" name="mensaje" rows="5" placeholder="Describe tu caso o consulta. Toda la información será tratada de forma confidencial" required></textarea>
+                                <textarea class="form-control" name="mensaje" id="mensaje" rows="4" placeholder="Describe brevemente tu situación. Esta información nos ayuda a preparar la reunión. Toda la información será tratada de forma confidencial." required></textarea>
                             </div>
                             <div class="col-12 text-center">
-                                <button type="submit" class="btn btn-primary btn-lg">Enviar Consulta</button>
+                                <button type="submit" class="btn btn-primary btn-lg" id="submitBtn">Solicitar Reunión</button>
+                            </div>
+                            <div class="col-12 text-center">
+                                <div id="formMessage" class="form-message" style="display: none;"></div>
                             </div>
                         </div>
                     </form>
